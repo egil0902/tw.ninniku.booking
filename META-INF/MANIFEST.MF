@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Booking
+Bundle-SymbolicName: tw.ninniku.booking;singleton:=true
+Bundle-Version: 10.0.1.qualifier
+Fragment-Host: org.adempiere.ui.zk;bundle-version="10.0.0"
+Automatic-Module-Name: tw.ninniku.booking
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Jetty-WarFragmentResourcePath: /
+Service-Component: OSGI-INF/tw.ninniku.booking.model.factory.xml,OSGI-INF/tw.ninniku.booking.form.factory.xml,
+ OSGI-INF/tw.ninniku.booking.process.factory.xml
+Bundle-ClassPath: .
+Export-Package: .

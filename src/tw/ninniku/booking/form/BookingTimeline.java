@@ -441,11 +441,14 @@ public class BookingTimeline extends ADForm implements IFormController, EventLis
 
 		String sql = "select * from s_resource where s_resourcetype_id = ?  ";
 		Listitem item = resourceType.getSelectedItem();
+		Gson gson = new Gson();
+		if(item == null)
+			return gson.toJson(list);
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
 			pstmt = DB.prepareStatement(sql, null);
-			 pstmt.setInt(1, Integer.valueOf( (String) resourceType.getSelectedItem().getId()));
+			 pstmt.setInt(1, Integer.valueOf( (String) item.getId()));
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				
@@ -462,7 +465,7 @@ public class BookingTimeline extends ADForm implements IFormController, EventLis
 			pstmt = null;
 		}
 		groups = list;
-		Gson gson = new Gson();
+
 		return gson.toJson(list);
 	}
 

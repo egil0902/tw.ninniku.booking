@@ -16,9 +16,10 @@ var cStart;
    zoomMin: 86400000,
    zoomMax: 2678400000,
    xss:{disabled: true},
+   showTooltips: true,
    tooltip: {
-      followMouse: false,
-      overflowMethod: 'cap'
+      followMouse: true,
+      overflowMethod: 'flip'
     },
     hiddenDates: hiddenDates = [
     {start: '2023-05-16 18:00:00', end: '2023-05-17 08:00:00', repeat: 'daily'},

@@ -420,7 +420,7 @@ public class BookingTimeline extends ADForm implements IFormController, EventLis
 				item.setContent( "(" + user.getName() + ")<br/>" + item.getContent());
 				if (booking.getDescription() != null)
 					item.setContent(item.getContent() + "<br/> " + booking.getDescription());
-
+				item.setTitle(item.getContent());
 				list.add(item);
 		}
 		Gson gson = new Gson();
@@ -472,7 +472,6 @@ public class BookingTimeline extends ADForm implements IFormController, EventLis
 	private boolean isWritable() {
 
 		Properties p = Env.getCtx();
-		System.out.println("getAdFormId()" + getAdFormId());
 		String sql = "select isreadwrite from AD_Form_Access where ad_role_id = ? and ad_form_id = ?";
 		String reslut = DB.getSQLValueString(null, sql,
 				new Object[] { Integer.valueOf(p.getProperty("#AD_Role_ID")), getAdFormId() });

@@ -22,10 +22,4 @@
       </plugin>
     </plugins>
   </build>
-      <resources>
-        <resource>
-            <directory>WEB-INF/src/web</directory>
-            <targetPath>WEB-INF/src/web</targetPath>
-        </resource>
-    </resources>
 </project>

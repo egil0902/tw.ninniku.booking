@@ -56,7 +56,7 @@ var cStart;
     		$("#group").val(item.group);
     		$("#M_Production_ID").val(item.M_Production_ID);
     		$("#update-form").dialog({
-    		        title: "修改製令單",
+    		        title: "Edit Meeting",
       				modal: true,
       				buttons: {
        				 Ok: function() {

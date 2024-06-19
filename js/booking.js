@@ -76,7 +76,7 @@ var cStart;
 	    $("#assign-date-to").val(end.toISOString().slice(0, 16));
 
     		$("#update-form").dialog({
-    		        title: "修改預約單",
+    		        title: "Edit Meeting",
       				modal: true,
 					width: "500px",
       				buttons: {
@@ -220,7 +220,7 @@ function clickNew(item,callback){
 		$("#s_booking_id").val(0);
 	    console.log(new Date(item.start).getTimezoneOffset());
 	    $("#update-form").dialog({
-    		        title: "新增預約單",
+    		        title: "Add Meeting",
       				modal: true,
 					width: "500px",
       				buttons: {

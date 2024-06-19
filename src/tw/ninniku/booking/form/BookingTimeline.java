@@ -17,11 +17,13 @@ import org.adempiere.webui.event.ValueChangeListener;
 import org.adempiere.webui.panel.ADForm;
 import org.adempiere.webui.panel.IFormController;
 import org.adempiere.webui.theme.ThemeManager;
+import org.compiere.model.MMessage;
 import org.compiere.model.MResourceType;
 import org.compiere.model.MUser;
 import org.compiere.model.Query;
 import org.compiere.util.DB;
 import org.compiere.util.Env;
+import org.compiere.util.Msg;
 import org.compiere.util.Trx;
 import org.zkoss.json.JSONObject;
 import org.zkoss.zk.ui.Component;
@@ -77,8 +79,8 @@ public class BookingTimeline extends ADForm implements IFormController, EventLis
 
 	@Override
 	public void onEvent(Event event) throws Exception {
-		System.out.println(event);
-		System.out.println(event.getTarget().getId());
+		//System.out.println(event);
+		//System.out.println(event.getTarget().getId());
 		if (event.getTarget().getId().equals("btnRefresh")) {
 			renewItem(0);
 			String cmd = " setTimeout(function(){" + "   drawChart();},500) ;";
@@ -170,7 +172,7 @@ public class BookingTimeline extends ADForm implements IFormController, EventLis
     		ok =booking.save(trx.getTrxName());
     		if(!ok)
     		{
-					errorMessage = "時間重疊:" + booking.getAssignDateFrom().toString();
+					errorMessage = Msg.getMsg(Env.getCtx(),"Time_Overlap") + " " + booking.getAssignDateFrom().toString();
 					errorMessage += " - " + booking.getAssignDateTo().toString();
 					return ok;
     		}
@@ -207,7 +209,7 @@ public class BookingTimeline extends ADForm implements IFormController, EventLis
     				booking.setAssignDateTo(new Timestamp(calendarTo.getTimeInMillis()));
     				if(!booking.save(trx.getTrxName()))
     				{
-    					errorMessage = "時間重疊:" + booking.getAssignDateFrom().toString();
+    					errorMessage = Msg.getMsg(Env.getCtx(),"Time_Overlap") + " " + booking.getAssignDateFrom().toString();
     					errorMessage += " - " + booking.getAssignDateTo().toString();
     					throw new AdempiereException();
     				}
@@ -368,6 +370,7 @@ public class BookingTimeline extends ADForm implements IFormController, EventLis
 						resourceType.appendChild(newItem);
 		}
 		
+		
 	}
 
 	private void renewItem(int delay) {
@@ -454,7 +457,7 @@ public class BookingTimeline extends ADForm implements IFormController, EventLis
 				
 				String code = rs.getString("value");
 				int id = rs.getInt("s_resource_id");
-				System.out.println(id);
+				//System.out.println(id);
 				list.add(new Group(id, code));
 			}
 		} catch (SQLException ex) {

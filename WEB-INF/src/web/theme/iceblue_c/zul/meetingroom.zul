@@ -23,7 +23,7 @@
    <listbox id="resourceType" mold="select">
   </listbox>
 
-  <n:div id="update-form" title="Add Meeting" style="display:none;">
+  <n:div id="update-form" title="預約單" style="display:none;">
   <n:form id="booking-form">
     <n:fieldset>
     <n:table>
